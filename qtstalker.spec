@@ -8,6 +8,7 @@ License:    	GPL
 Group:      	Graphical desktop/Other
 URL:        	http://qtstalker.sourceforge.net
 Source:     	http://downloads.sourceforge.net/qtstalker/qtstalker-%version.tar.gz
+Patch:  	qtstalker-0.33-build_fix_x86_64.patch
 BuildRoot:  	%_tmppath/%name-buildroot
 BuildRequires:	db4.2-devel
 BuildRequires:	libqt-devel
@@ -21,14 +22,19 @@ testing, chart objects and many more features included.
 
 %prep
 %setup -q -n %name
+%patch -p1 -b .build_fix_x86_64
+
+sed -i 's|@@LIBDIR@@|%_libdir|g' lib/Config.cpp
+sed -i 's|/usr/lib/qtstalker|%_libdir/qtstalker|g' \
+	docs/install.html docs/faq.html
 
 %build
 ./configure
-%make
+make LIBDIR=%_libdir
 
 %install
 rm -rf %buildroot
-make INSTALL_ROOT=%buildroot install
+make INSTALL_ROOT=%buildroot LIBDIR=%_libdir install
 
 mkdir %buildroot/%_datadir/pixmaps
 cp pics/%name.xpm %buildroot/%_datadir/pixmaps
