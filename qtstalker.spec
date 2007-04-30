@@ -9,6 +9,7 @@ Group:      	Graphical desktop/Other
 URL:        	http://qtstalker.sourceforge.net
 Source:     	http://downloads.sourceforge.net/qtstalker/qtstalker-%version.tar.gz
 BuildRoot:  	%_tmppath/%name-buildroot
+BuildRequires:	db4.2-devel
 BuildRequires:	libqt-devel
 Requires(post,postun): desktop-common-data
 Requires(post,postun): ldconfig
