@@ -30,7 +30,7 @@ sed -i 's|/usr/lib/qtstalker|%_libdir/qtstalker|g' \
 
 %build
 ./configure
-make LIBDIR=%_libdir
+make
 
 %install
 rm -rf %buildroot
