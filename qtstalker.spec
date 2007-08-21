@@ -13,7 +13,6 @@ BuildRoot:  	%_tmppath/%name-buildroot
 BuildRequires:	db4.2-devel
 BuildRequires:	libqt-devel
 Requires(post,postun): desktop-common-data
-Requires(post,postun): ldconfig
 
 %description
 Stock market, commodity and technical analysis charting app based on the Qt
