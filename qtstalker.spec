@@ -48,7 +48,6 @@ Icon=%name
 Terminal=false
 Type=Application
 Categories=X-MandrivaLinux-MoreApplications-Finances;Office;Finance;
-Encoding=UTF-8
 EOF
 
 # Package with doc macro
