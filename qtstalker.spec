@@ -9,7 +9,6 @@ Group:      	Graphical desktop/Other
 URL:        	http://qtstalker.sourceforge.net
 Source:     	http://downloads.sourceforge.net/qtstalker/qtstalker-%version.tar.gz
 Patch:  	qtstalker-0.33-build_fix_x86_64.patch
-BuildRoot:  	%_tmppath/%name-buildroot
 BuildRequires:	db4.2-devel
 BuildRequires:	libqt-devel
 Requires(post,postun): desktop-common-data
