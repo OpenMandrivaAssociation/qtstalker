@@ -2,7 +2,7 @@
 
 Name:       	qtstalker
 Version:    	0.33
-Release:    	%mkrel 2
+Release:    	%mkrel 4
 Summary:    	%Summary
 License:    	GPL
 Group:      	Graphical desktop/Other
