@@ -1,0 +1,249 @@
+diff -Naur qtstalker.orig/lib/Config.cpp qtstalker/lib/Config.cpp
+--- qtstalker.orig/lib/Config.cpp	2006-11-18 04:15:28.000000000 +0100
++++ qtstalker/lib/Config.cpp	2007-04-30 22:15:35.000000000 +0200
+@@ -210,10 +210,10 @@
+       s = settings.readEntry("/Qtstalker/ScaleToScreen", "1");
+       break;
+     case IndicatorPluginPath:
+-      s = settings.readEntry("/Qtstalker/IndicatorPluginPath", "/usr/lib/qtstalker/indicator");
++      s = settings.readEntry("/Qtstalker/IndicatorPluginPath", "@@LIBDIR@@/qtstalker/indicator");
+       break;
+     case QuotePluginPath:
+-      s = settings.readEntry("/Qtstalker/QuotePluginPath", "/usr/lib/qtstalker/quote");
++      s = settings.readEntry("/Qtstalker/QuotePluginPath", "@@LIBDIR@@/qtstalker/quote");
+       break;
+     case Group:
+       s = settings.readEntry("/Qtstalker/Group");
+diff -Naur qtstalker.orig/lib/lib.pro qtstalker/lib/lib.pro
+--- qtstalker.orig/lib/lib.pro	2006-11-18 03:12:34.000000000 +0100
++++ qtstalker/lib/lib.pro	2007-04-30 22:15:05.000000000 +0200
+@@ -108,6 +108,6 @@
+ unix:freebsd-g++:INCLUDEPATH += /usr/local/include/db43
+ unix:freebsd-g++:LIBS += -L/usr/local/lib/db43
+ 
+-target.path = /usr/lib
++target.path = $(LIBDIR)
+ INSTALLS += target
+ 
+diff -Naur qtstalker.orig/plugins/indicator/BARS/BARS.pro qtstalker/plugins/indicator/BARS/BARS.pro
+--- qtstalker.orig/plugins/indicator/BARS/BARS.pro	2005-10-24 22:34:42.000000000 +0200
++++ qtstalker/plugins/indicator/BARS/BARS.pro	2007-04-30 21:50:03.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += BARS.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/CUS/CUS.pro qtstalker/plugins/indicator/CUS/CUS.pro
+--- qtstalker.orig/plugins/indicator/CUS/CUS.pro	2005-05-20 05:09:05.000000000 +0200
++++ qtstalker/plugins/indicator/CUS/CUS.pro	2007-04-30 21:50:24.000000000 +0200
+@@ -10,5 +10,5 @@
+ SOURCES += CUS.cpp
+ SOURCES += CUSDialog.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/FI/FI.pro qtstalker/plugins/indicator/FI/FI.pro
+--- qtstalker.orig/plugins/indicator/FI/FI.pro	2005-05-20 05:09:06.000000000 +0200
++++ qtstalker/plugins/indicator/FI/FI.pro	2007-04-30 21:50:39.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += FI.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/LMS/LMS.pro qtstalker/plugins/indicator/LMS/LMS.pro
+--- qtstalker.orig/plugins/indicator/LMS/LMS.pro	2005-05-22 20:41:26.000000000 +0200
++++ qtstalker/plugins/indicator/LMS/LMS.pro	2007-04-30 21:50:59.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += LMS.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/LOWPASS/LOWPASS.pro qtstalker/plugins/indicator/LOWPASS/LOWPASS.pro
+--- qtstalker.orig/plugins/indicator/LOWPASS/LOWPASS.pro	2005-10-15 17:56:55.000000000 +0200
++++ qtstalker/plugins/indicator/LOWPASS/LOWPASS.pro	2007-04-30 21:51:17.000000000 +0200
+@@ -10,5 +10,5 @@
+ SOURCES += LOWPASS.cpp
+ SOURCES += qtsFFT.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/PP/PP.pro qtstalker/plugins/indicator/PP/PP.pro
+--- qtstalker.orig/plugins/indicator/PP/PP.pro	2005-05-20 05:09:08.000000000 +0200
++++ qtstalker/plugins/indicator/PP/PP.pro	2007-04-30 21:51:39.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += PP.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/SINWAV/SINWAV.pro qtstalker/plugins/indicator/SINWAV/SINWAV.pro
+--- qtstalker.orig/plugins/indicator/SINWAV/SINWAV.pro	2005-05-22 20:41:26.000000000 +0200
++++ qtstalker/plugins/indicator/SINWAV/SINWAV.pro	2007-04-30 21:51:57.000000000 +0200
+@@ -8,6 +8,6 @@
+ 
+ SOURCES += SINWAV.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+ 
+diff -Naur qtstalker.orig/plugins/indicator/SYMBOL/SYMBOL.pro qtstalker/plugins/indicator/SYMBOL/SYMBOL.pro
+--- qtstalker.orig/plugins/indicator/SYMBOL/SYMBOL.pro	2005-05-20 05:09:10.000000000 +0200
++++ qtstalker/plugins/indicator/SYMBOL/SYMBOL.pro	2007-04-30 21:52:16.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += SYMBOL.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/SZ/SZ.pro qtstalker/plugins/indicator/SZ/SZ.pro
+--- qtstalker.orig/plugins/indicator/SZ/SZ.pro	2005-05-20 05:09:11.000000000 +0200
++++ qtstalker/plugins/indicator/SZ/SZ.pro	2007-04-30 21:52:36.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += SZ.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/TALIB/TALIB.pro qtstalker/plugins/indicator/TALIB/TALIB.pro
+--- qtstalker.orig/plugins/indicator/TALIB/TALIB.pro	2006-10-12 22:11:34.000000000 +0200
++++ qtstalker/plugins/indicator/TALIB/TALIB.pro	2007-04-30 21:52:55.000000000 +0200
+@@ -13,12 +13,13 @@
+ unix:INCLUDEPATH += ta-lib/c/include
+ unix:LIBS += -Lta-lib/c/lib
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+ 
+ system(tar zxvf talib.tar.gz)
+ unix:linux-g++:system(cd ta-lib/c/make/cmr/linux/g++ ; make)
++unix:linux-g++-64:system(cd ta-lib/c/make/cmr/linux/g++ ; make)
+ unix:freebsd-g++:system(cd ta-lib/c/make/cmr/freebsd/g++ ; make)
+ 
+ # for macx build problem
+-unix:macx-g++:system(cd ta-lib/c/make/cmr/freebsd/g++ ; make)
+\ No newline at end of file
++unix:macx-g++:system(cd ta-lib/c/make/cmr/freebsd/g++ ; make)
+diff -Naur qtstalker.orig/plugins/indicator/THERM/THERM.pro qtstalker/plugins/indicator/THERM/THERM.pro
+--- qtstalker.orig/plugins/indicator/THERM/THERM.pro	2005-05-20 05:09:11.000000000 +0200
++++ qtstalker/plugins/indicator/THERM/THERM.pro	2007-04-30 21:53:14.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += THERM.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/UTIL/UTIL.pro qtstalker/plugins/indicator/UTIL/UTIL.pro
+--- qtstalker.orig/plugins/indicator/UTIL/UTIL.pro	2005-05-23 20:47:01.000000000 +0200
++++ qtstalker/plugins/indicator/UTIL/UTIL.pro	2007-04-30 21:53:31.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += UTIL.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/VFI/VFI.pro qtstalker/plugins/indicator/VFI/VFI.pro
+--- qtstalker.orig/plugins/indicator/VFI/VFI.pro	2005-05-20 05:09:12.000000000 +0200
++++ qtstalker/plugins/indicator/VFI/VFI.pro	2007-04-30 21:53:47.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += VFI.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/VIDYA/VIDYA.pro qtstalker/plugins/indicator/VIDYA/VIDYA.pro
+--- qtstalker.orig/plugins/indicator/VIDYA/VIDYA.pro	2005-05-29 19:30:02.000000000 +0200
++++ qtstalker/plugins/indicator/VIDYA/VIDYA.pro	2007-04-30 21:54:03.000000000 +0200
+@@ -8,6 +8,6 @@
+ 
+ SOURCES += VIDYA.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+ 
+diff -Naur qtstalker.orig/plugins/indicator/VOL/VOL.pro qtstalker/plugins/indicator/VOL/VOL.pro
+--- qtstalker.orig/plugins/indicator/VOL/VOL.pro	2005-05-20 05:09:12.000000000 +0200
++++ qtstalker/plugins/indicator/VOL/VOL.pro	2007-04-30 21:54:17.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += VOL.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/indicator/VOLA/VOLA.pro qtstalker/plugins/indicator/VOLA/VOLA.pro
+--- qtstalker.orig/plugins/indicator/VOLA/VOLA.pro	2005-10-07 01:05:43.000000000 +0200
++++ qtstalker/plugins/indicator/VOLA/VOLA.pro	2007-04-30 21:54:31.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += VOLA.cpp
+ 
+-target.path = /usr/lib/qtstalker/indicator
++target.path = $(LIBDIR)/qtstalker/indicator
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/quote/CME/CME.pro qtstalker/plugins/quote/CME/CME.pro
+--- qtstalker.orig/plugins/quote/CME/CME.pro	2005-05-20 05:09:13.000000000 +0200
++++ qtstalker/plugins/quote/CME/CME.pro	2007-04-30 21:54:46.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += CME.cpp
+ 
+-target.path = /usr/lib/qtstalker/quote
++target.path = $(LIBDIR)/qtstalker/quote
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/quote/CSV/CSV.pro qtstalker/plugins/quote/CSV/CSV.pro
+--- qtstalker.orig/plugins/quote/CSV/CSV.pro	2005-05-20 05:09:13.000000000 +0200
++++ qtstalker/plugins/quote/CSV/CSV.pro	2007-04-30 21:55:04.000000000 +0200
+@@ -12,5 +12,5 @@
+ SOURCES += CSVDialog.cpp
+ SOURCES += CSVRuleDialog.cpp
+ 
+-target.path = /usr/lib/qtstalker/quote
++target.path = $(LIBDIR)/qtstalker/quote
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/quote/NYBOT/NYBOT.pro qtstalker/plugins/quote/NYBOT/NYBOT.pro
+--- qtstalker.orig/plugins/quote/NYBOT/NYBOT.pro	2005-05-20 05:09:14.000000000 +0200
++++ qtstalker/plugins/quote/NYBOT/NYBOT.pro	2007-04-30 21:55:19.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += NYBOT.cpp
+ 
+-target.path = /usr/lib/qtstalker/quote
++target.path = $(LIBDIR)/qtstalker/quote
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/quote/QtstalkerFormat/QtstalkerFormat.pro qtstalker/plugins/quote/QtstalkerFormat/QtstalkerFormat.pro
+--- qtstalker.orig/plugins/quote/QtstalkerFormat/QtstalkerFormat.pro	2005-05-20 05:09:14.000000000 +0200
++++ qtstalker/plugins/quote/QtstalkerFormat/QtstalkerFormat.pro	2007-04-30 21:55:45.000000000 +0200
+@@ -8,5 +8,5 @@
+ 
+ SOURCES += QtstalkerFormat.cpp
+ 
+-target.path = /usr/lib/qtstalker/quote
++target.path = $(LIBDIR)/qtstalker/quote
+ INSTALLS += target
+diff -Naur qtstalker.orig/plugins/quote/Yahoo/Yahoo.pro qtstalker/plugins/quote/Yahoo/Yahoo.pro
+--- qtstalker.orig/plugins/quote/Yahoo/Yahoo.pro	2005-05-20 05:09:15.000000000 +0200
++++ qtstalker/plugins/quote/Yahoo/Yahoo.pro	2007-04-30 21:56:00.000000000 +0200
+@@ -10,5 +10,5 @@
+ SOURCES += Yahoo.cpp
+ SOURCES += YahooDialog.cpp
+ 
+-target.path = /usr/lib/qtstalker/quote
++target.path = $(LIBDIR)/qtstalker/quote
+ INSTALLS += target
