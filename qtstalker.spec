@@ -6,7 +6,7 @@ Release:    	%mkrel 5
 Summary:    	%Summary
 License:    	GPL
 Group:      	Graphical desktop/Other
-URL:        	http://qtstalker.sourceforge.net
+URL:        	https://qtstalker.sourceforge.net
 Source:     	http://downloads.sourceforge.net/qtstalker/qtstalker-%version.tar.gz
 Patch:  	qtstalker-0.33-build_fix_x86_64.patch
 BuildRoot:  	%_tmppath/%name-buildroot
